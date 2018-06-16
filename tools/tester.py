@@ -37,7 +37,7 @@ class MultipleCppFilesError(Exception):
 def do_test(exec_file=None):
     exec_files = [fname for fname in glob.glob(
         './*') if os.access(fname, os.X_OK) and fname.find("test.py") == -1 and fname.find(
-        ".cpp") == -1 and not fname.endswith(".txt")]  # cppやtxtを省くのは一応の Cygwin 対策
+        ".cpp") == -1 and not fname.endswith(".txt") and not fname == "./nimcache"]  # cppやtxtを省くのは一応の Cygwin 対策
     if exec_file is None:
         if len(exec_files) == 0:
             raise NoExecutableFileError

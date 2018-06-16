@@ -41,7 +41,7 @@ def prepare_procedure(argv):
 
     dirname = "workspace/%s/%s" % (contestid, pid)
     os.makedirs(dirname, exist_ok=True)
-    solution_name = "%s/%s.cpp" % (dirname, pid)
+    solution_name = "%s/%s.nim" % (dirname, pid)
 
     # 既にコードが存在しているなら上書きする前にバックアップを取る
     if os.path.exists(solution_name):
@@ -55,7 +55,7 @@ def prepare_procedure(argv):
 
     # 自動生成済みコードを格納
     with open(solution_name, "w") as f:
-        from templates.cpp.cpp_code_generator import code_generator
+        from templates.nim.nim_code_generator import code_generator
         f.write(code_generator(result))
 
     # サンプルを格納
